@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/iyalosh/Prisma_helloworld#readme",
   "dependencies": {
+    "graphql-yoga": "^1.17.4",
     "prisma-client-lib": "^1.26.6"
   },
   "devDependencies": {
