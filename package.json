@@ -1,0 +1,28 @@
+{
+  "name": "Prisma_helloworld",
+  "version": "1.0.0",
+  "description": "\"# Prisma_helloworld\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iyalosh/Prisma_helloworld.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iyalosh/Prisma_helloworld/issues"
+  },
+  "homepage": "https://github.com/iyalosh/Prisma_helloworld#readme",
+  "dependencies": {
+    "prisma-client-lib": "^1.26.6"
+  },
+  "devDependencies": {
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  }
+}
