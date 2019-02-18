@@ -46,7 +46,7 @@ type PageInfo {
 
 type Post {
   id: ID!
-  titl: String!
+  title: String!
   published: Boolean!
   auther: User
 }
@@ -58,7 +58,7 @@ type PostConnection {
 }
 
 input PostCreateInput {
-  titl: String!
+  title: String!
   published: Boolean
   auther: UserCreateOneWithoutPostsInput
 }
@@ -69,7 +69,7 @@ input PostCreateManyWithoutAutherInput {
 }
 
 input PostCreateWithoutAutherInput {
-  titl: String!
+  title: String!
   published: Boolean
 }
 
@@ -81,8 +81,8 @@ type PostEdge {
 enum PostOrderByInput {
   id_ASC
   id_DESC
-  titl_ASC
-  titl_DESC
+  title_ASC
+  title_DESC
   published_ASC
   published_DESC
   createdAt_ASC
@@ -93,7 +93,7 @@ enum PostOrderByInput {
 
 type PostPreviousValues {
   id: ID!
-  titl: String!
+  title: String!
   published: Boolean!
 }
 
@@ -112,20 +112,20 @@ input PostScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  titl: String
-  titl_not: String
-  titl_in: [String!]
-  titl_not_in: [String!]
-  titl_lt: String
-  titl_lte: String
-  titl_gt: String
-  titl_gte: String
-  titl_contains: String
-  titl_not_contains: String
-  titl_starts_with: String
-  titl_not_starts_with: String
-  titl_ends_with: String
-  titl_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   published: Boolean
   published_not: Boolean
   AND: [PostScalarWhereInput!]
@@ -152,18 +152,18 @@ input PostSubscriptionWhereInput {
 }
 
 input PostUpdateInput {
-  titl: String
+  title: String
   published: Boolean
   auther: UserUpdateOneWithoutPostsInput
 }
 
 input PostUpdateManyDataInput {
-  titl: String
+  title: String
   published: Boolean
 }
 
 input PostUpdateManyMutationInput {
-  titl: String
+  title: String
   published: Boolean
 }
 
@@ -185,7 +185,7 @@ input PostUpdateManyWithWhereNestedInput {
 }
 
 input PostUpdateWithoutAutherDataInput {
-  titl: String
+  title: String
   published: Boolean
 }
 
@@ -215,20 +215,20 @@ input PostWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  titl: String
-  titl_not: String
-  titl_in: [String!]
-  titl_not_in: [String!]
-  titl_lt: String
-  titl_lte: String
-  titl_gt: String
-  titl_gte: String
-  titl_contains: String
-  titl_not_contains: String
-  titl_starts_with: String
-  titl_not_starts_with: String
-  titl_ends_with: String
-  titl_not_ends_with: String
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
   published: Boolean
   published_not: Boolean
   auther: UserWhereInput

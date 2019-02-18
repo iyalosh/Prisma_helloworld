@@ -7,7 +7,7 @@ type User {
 
 type Post {
   id: ID! @unique
-  titl: String!
+  title: String!
   published: Boolean! @default(value: "false")
   auther: User
 }

@@ -141,8 +141,8 @@ export interface ClientConstructor<T> {
 export type PostOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "titl_ASC"
-  | "titl_DESC"
+  | "title_ASC"
+  | "title_DESC"
   | "published_ASC"
   | "published_DESC"
   | "createdAt_ASC"
@@ -202,7 +202,7 @@ export interface UserCreateInput {
 }
 
 export interface PostUpdateManyMutationInput {
-  titl?: String;
+  title?: String;
   published?: Boolean;
 }
 
@@ -218,7 +218,7 @@ export interface UserSubscriptionWhereInput {
 }
 
 export interface PostCreateInput {
-  titl: String;
+  title: String;
   published?: Boolean;
   auther?: UserCreateOneWithoutPostsInput;
 }
@@ -249,13 +249,13 @@ export type UserWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface PostUpdateInput {
-  titl?: String;
+  title?: String;
   published?: Boolean;
   auther?: UserUpdateOneWithoutPostsInput;
 }
 
 export interface PostUpdateWithoutAutherDataInput {
-  titl?: String;
+  title?: String;
   published?: Boolean;
 }
 
@@ -322,7 +322,7 @@ export interface UserUpdateWithoutPostsDataInput {
 }
 
 export interface PostUpdateManyDataInput {
-  titl?: String;
+  title?: String;
   published?: Boolean;
 }
 
@@ -332,7 +332,7 @@ export interface PostCreateManyWithoutAutherInput {
 }
 
 export interface PostCreateWithoutAutherInput {
-  titl: String;
+  title: String;
   published?: Boolean;
 }
 
@@ -351,20 +351,20 @@ export interface PostWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  titl?: String;
-  titl_not?: String;
-  titl_in?: String[] | String;
-  titl_not_in?: String[] | String;
-  titl_lt?: String;
-  titl_lte?: String;
-  titl_gt?: String;
-  titl_gte?: String;
-  titl_contains?: String;
-  titl_not_contains?: String;
-  titl_starts_with?: String;
-  titl_not_starts_with?: String;
-  titl_ends_with?: String;
-  titl_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
   published?: Boolean;
   published_not?: Boolean;
   auther?: UserWhereInput;
@@ -393,20 +393,20 @@ export interface PostScalarWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  titl?: String;
-  titl_not?: String;
-  titl_in?: String[] | String;
-  titl_not_in?: String[] | String;
-  titl_lt?: String;
-  titl_lte?: String;
-  titl_gt?: String;
-  titl_gte?: String;
-  titl_contains?: String;
-  titl_not_contains?: String;
-  titl_starts_with?: String;
-  titl_not_starts_with?: String;
-  titl_ends_with?: String;
-  titl_not_ends_with?: String;
+  title?: String;
+  title_not?: String;
+  title_in?: String[] | String;
+  title_not_in?: String[] | String;
+  title_lt?: String;
+  title_lte?: String;
+  title_gt?: String;
+  title_gte?: String;
+  title_contains?: String;
+  title_not_contains?: String;
+  title_starts_with?: String;
+  title_not_starts_with?: String;
+  title_ends_with?: String;
+  title_not_ends_with?: String;
   published?: Boolean;
   published_not?: Boolean;
   AND?: PostScalarWhereInput[] | PostScalarWhereInput;
@@ -588,13 +588,13 @@ export interface PostConnectionSubscription
 
 export interface Post {
   id: ID_Output;
-  titl: String;
+  title: String;
   published: Boolean;
 }
 
 export interface PostPromise extends Promise<Post>, Fragmentable {
   id: () => Promise<ID_Output>;
-  titl: () => Promise<String>;
+  title: () => Promise<String>;
   published: () => Promise<Boolean>;
   auther: <T = UserPromise>() => T;
 }
@@ -603,14 +603,14 @@ export interface PostSubscription
   extends Promise<AsyncIterator<Post>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  titl: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
   published: () => Promise<AsyncIterator<Boolean>>;
   auther: <T = UserSubscription>() => T;
 }
 
 export interface PostPreviousValues {
   id: ID_Output;
-  titl: String;
+  title: String;
   published: Boolean;
 }
 
@@ -618,7 +618,7 @@ export interface PostPreviousValuesPromise
   extends Promise<PostPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  titl: () => Promise<String>;
+  title: () => Promise<String>;
   published: () => Promise<Boolean>;
 }
 
@@ -626,7 +626,7 @@ export interface PostPreviousValuesSubscription
   extends Promise<AsyncIterator<PostPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  titl: () => Promise<AsyncIterator<String>>;
+  title: () => Promise<AsyncIterator<String>>;
   published: () => Promise<AsyncIterator<Boolean>>;
 }
 
