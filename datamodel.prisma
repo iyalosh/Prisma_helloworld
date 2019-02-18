@@ -1,4 +1,13 @@
 type User {
   id: ID! @unique
+  email: String @unique
   name: String!
+  posts: [Post!]!
+}
+
+type Post {
+  id: ID! @unique
+  titl: String!
+  published: Boolean! @default(value: "false")
+  auther: User
 }

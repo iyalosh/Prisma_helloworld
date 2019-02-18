@@ -1,4 +1,8 @@
-export const typeDefs = /* GraphQL */ `type AggregateUser {
+export const typeDefs = /* GraphQL */ `type AggregatePost {
+  count: Int!
+}
+
+type AggregateUser {
   count: Int!
 }
 
@@ -9,6 +13,12 @@ type BatchPayload {
 scalar Long
 
 type Mutation {
+  createPost(data: PostCreateInput!): Post!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
+  deletePost(where: PostWhereUniqueInput!): Post
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
   createUser(data: UserCreateInput!): User!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
@@ -34,7 +44,207 @@ type PageInfo {
   endCursor: String
 }
 
+type Post {
+  id: ID!
+  titl: String!
+  published: Boolean!
+  auther: User
+}
+
+type PostConnection {
+  pageInfo: PageInfo!
+  edges: [PostEdge]!
+  aggregate: AggregatePost!
+}
+
+input PostCreateInput {
+  titl: String!
+  published: Boolean
+  auther: UserCreateOneWithoutPostsInput
+}
+
+input PostCreateManyWithoutAutherInput {
+  create: [PostCreateWithoutAutherInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateWithoutAutherInput {
+  titl: String!
+  published: Boolean
+}
+
+type PostEdge {
+  node: Post!
+  cursor: String!
+}
+
+enum PostOrderByInput {
+  id_ASC
+  id_DESC
+  titl_ASC
+  titl_DESC
+  published_ASC
+  published_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PostPreviousValues {
+  id: ID!
+  titl: String!
+  published: Boolean!
+}
+
+input PostScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  titl: String
+  titl_not: String
+  titl_in: [String!]
+  titl_not_in: [String!]
+  titl_lt: String
+  titl_lte: String
+  titl_gt: String
+  titl_gte: String
+  titl_contains: String
+  titl_not_contains: String
+  titl_starts_with: String
+  titl_not_starts_with: String
+  titl_ends_with: String
+  titl_not_ends_with: String
+  published: Boolean
+  published_not: Boolean
+  AND: [PostScalarWhereInput!]
+  OR: [PostScalarWhereInput!]
+  NOT: [PostScalarWhereInput!]
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
+  updatedFields: [String!]
+  previousValues: PostPreviousValues
+}
+
+input PostSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PostWhereInput
+  AND: [PostSubscriptionWhereInput!]
+  OR: [PostSubscriptionWhereInput!]
+  NOT: [PostSubscriptionWhereInput!]
+}
+
+input PostUpdateInput {
+  titl: String
+  published: Boolean
+  auther: UserUpdateOneWithoutPostsInput
+}
+
+input PostUpdateManyDataInput {
+  titl: String
+  published: Boolean
+}
+
+input PostUpdateManyMutationInput {
+  titl: String
+  published: Boolean
+}
+
+input PostUpdateManyWithoutAutherInput {
+  create: [PostCreateWithoutAutherInput!]
+  delete: [PostWhereUniqueInput!]
+  connect: [PostWhereUniqueInput!]
+  set: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutAutherInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutAutherInput!]
+  deleteMany: [PostScalarWhereInput!]
+  updateMany: [PostUpdateManyWithWhereNestedInput!]
+}
+
+input PostUpdateManyWithWhereNestedInput {
+  where: PostScalarWhereInput!
+  data: PostUpdateManyDataInput!
+}
+
+input PostUpdateWithoutAutherDataInput {
+  titl: String
+  published: Boolean
+}
+
+input PostUpdateWithWhereUniqueWithoutAutherInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutAutherDataInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutAutherInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutAutherDataInput!
+  create: PostCreateWithoutAutherInput!
+}
+
+input PostWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  titl: String
+  titl_not: String
+  titl_in: [String!]
+  titl_not_in: [String!]
+  titl_lt: String
+  titl_lte: String
+  titl_gt: String
+  titl_gte: String
+  titl_contains: String
+  titl_not_contains: String
+  titl_starts_with: String
+  titl_not_starts_with: String
+  titl_ends_with: String
+  titl_not_ends_with: String
+  published: Boolean
+  published_not: Boolean
+  auther: UserWhereInput
+  AND: [PostWhereInput!]
+  OR: [PostWhereInput!]
+  NOT: [PostWhereInput!]
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
 type Query {
+  post(where: PostWhereUniqueInput!): Post
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
   user(where: UserWhereUniqueInput!): User
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
@@ -42,12 +252,15 @@ type Query {
 }
 
 type Subscription {
+  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
 type User {
   id: ID!
+  email: String
   name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
 }
 
 type UserConnection {
@@ -57,6 +270,18 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  email: String
+  name: String!
+  posts: PostCreateManyWithoutAutherInput
+}
+
+input UserCreateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutPostsInput {
+  email: String
   name: String!
 }
 
@@ -68,6 +293,8 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  email_ASC
+  email_DESC
   name_ASC
   name_DESC
   createdAt_ASC
@@ -78,6 +305,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  email: String
   name: String!
 }
 
@@ -100,11 +328,33 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
+  email: String
   name: String
+  posts: PostUpdateManyWithoutAutherInput
 }
 
 input UserUpdateManyMutationInput {
+  email: String
   name: String
+}
+
+input UserUpdateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: UserWhereUniqueInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+  email: String
+  name: String
+}
+
+input UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput!
+  create: UserCreateWithoutPostsInput!
 }
 
 input UserWhereInput {
@@ -122,6 +372,20 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
   name: String
   name_not: String
   name_in: [String!]
@@ -136,6 +400,9 @@ input UserWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
@@ -143,5 +410,6 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 `
