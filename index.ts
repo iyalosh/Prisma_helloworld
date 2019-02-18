@@ -58,7 +58,7 @@ const resolvers = {
     }
   }
 }
-//Configuring the GraphQL server based on ./schema.graphql and context attached by Prisma core
+//Configuring the GraphQL server relying on GraphQL-Yoga server and based on configuration in ./schema.graphql and context attached by Prisma core
 const server = new GraphQLServer({
   typeDefs: './schema.graphql',
   resolvers,
