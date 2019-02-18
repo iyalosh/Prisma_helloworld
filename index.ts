@@ -20,11 +20,14 @@ async function main() {
   // console.log(allUsers)
   // console.log(user)
   // console.log(usersCalledAllice)
-  const updatedUser = await prisma
-  .updateUser({
-    where: { id: 'cjsa99exq6nv90b5921ahyqve' },
-    data: { name: 'Bob' }
-  })
+  // const updatedUser = await prisma
+  // .updateUser({
+  //   where: { id: 'cjsa99exq6nv90b5921ahyqve' },
+  //   data: { name: 'Bob' }
+  // })
+  const deletedUser = await prisma
+  .deleteUser({ id: 'cjsa9jtsu6rc10b591mpqtppa' })
+
   const allUsers = await prisma.users()
   console.log(allUsers)
 }
